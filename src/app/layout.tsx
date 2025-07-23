@@ -1,11 +1,11 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
-import "./globals.css";
-import { IconArrowLeft, IconInfoSquareRounded, IconMusic, IconUsers } from "@tabler/icons-react";
+import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar-ace";
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { sidebarData } from "@/data/sidebar-data";
+import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -13,13 +13,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={``}
-      >
-        <SideBar>{children}</SideBar>
-      </body>
-    </html>
+<html lang="en">
+  <body>
+    <SideBar>
+      <div className="grid grid-rows-[20px_1fr_20px] min-h-screen w-screen h-screen bg-gray-200 dark:bg-neutral-900 rounded-tl-2xl border border-neutral-200">
+        {/* Top spacer or header */}
+        <div />
+        {/* Main content (centered horizontally) */}
+        <div className="flex flex-col items-center w-full h-full">
+          {children}
+        </div>
+        {/* Bottom spacer or footer */}
+        <div />
+      </div>
+    </SideBar>
+  </body>
+</html>
+
   );
 }
 
@@ -28,55 +38,6 @@ function SideBar({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const links = [
-    {
-      label: "Top Songs",
-      href: "/pages/home",
-      icon: (
-        <IconMusic className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
-    {
-      label: "Top Artists",
-      href: "/pages/top-artists",
-      icon: (
-        <IconUsers className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
-    // {
-    //   label: "Gems",
-    //   href: "/pages/gems",
-    //   icon: (
-    //     <IconSparkles className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-    //   ),
-    // },
-    {
-      label: "About",
-      href: "/pages/about",
-      icon: (
-        <IconInfoSquareRounded className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
-    // {
-    //   label: "Settings",
-    //   href: "#",
-    //   icon: (
-    //     <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-    //   ),
-    // },
-    {
-      label: "Logout",
-      href: "/",
-      icon: (
-        <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-      onClick: () => {
-        console.log("worked");
-        localStorage.removeItem("token");
-        window.location.href = "/";
-      },
-    },
-  ];
   const [open, setOpen] = useState(false);
   return (
     <div
@@ -92,14 +53,12 @@ function SideBar({
               <Logo />
             </>
             <div className="mt-8 flex flex-col gap-2">
-              {links.map((link, idx) => (
+              {sidebarData.map((link, idx) => (
                 <SidebarLink key={idx} link={link} />
               ))}
             </div>
           </div>
-          <div>
-
-          </div>
+          <div></div>
         </SidebarBody>
       </Sidebar>
       {children}
@@ -119,9 +78,8 @@ const Logo = () => {
         animate={{ opacity: 1 }}
         className="font-medium text-black dark:text-white whitespace-pre"
       >
-        GemifyMusic
+        Components
       </motion.span>
     </Link>
   );
 };
-
