@@ -12,7 +12,7 @@ import classNames from "classnames";
 // COLORS
 const ESTATE_GREEN = "#1E392A"; // replace with your brand or match their demo
 
-const API_KEY = "AIzaSyBT28bFMVCed4uiYx0QLKVdc8us4Ne1E-w";
+const API_KEY = "";
 const MAP_ID = "e69365758e39f05a997dfb1b";
 const PLACE_IDS = [
   "ChIJt8Q3HABhwokRc3FsBemPWAo",
