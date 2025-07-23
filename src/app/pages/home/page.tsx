@@ -91,6 +91,14 @@ const PLACE_IDS = [
 ];
 const ESTATE_GREEN = "#1E392A";
 
+if (typeof window !== "undefined") {
+  const apiKey = API_KEY;
+  console.log(
+    "[DEBUG] Loaded Google Maps API Key:",
+    apiKey ? apiKey.slice(0, 4) + "..." + apiKey.slice(-4) : "NOT FOUND"
+  );
+}
+
 // --- Types ---
 type Place = {
   name: string;
