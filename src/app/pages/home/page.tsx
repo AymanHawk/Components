@@ -12,7 +12,7 @@ import { IconSalad } from "@tabler/icons-react";
 import classNames from "classnames";
 
 // --- Config ---
-const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
+const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_K ?? "";
 const MAP_ID = process.env.NEXT_PUBLIC_MAP_ID;
 const PLACE_IDS = [
   "ChIJt8Q3HABhwokRc3FsBemPWAo",
